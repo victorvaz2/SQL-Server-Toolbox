@@ -74,7 +74,7 @@ BEGIN
         END TRY
         BEGIN CATCH
 			PRINT 'ERROR: Some index or constraint rely on the column ' + @column_name + '. No conversion possible.'
-			PRINT @sql
+			--PRINT @sql
         END CATCH
 
         FETCH NEXT FROM local_change_cursor
