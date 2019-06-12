@@ -173,7 +173,7 @@ IF EXISTS
 (
     SELECT *
     FROM   sys.views
-    WHERE  object_id = OBJECT_ID(N'[dbo].[V_ALGO_XYZ]')							/* Nome da VIEW */
+    WHERE  object_id = OBJECT_ID(N'V_ALGO_XYZ')							/* Nome da VIEW */
 )
 	BEGIN
 	   DROP VIEW [dbo].[V_ALGO_XYZ];											/* Nome da VIEW */
