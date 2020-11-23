@@ -1,4 +1,4 @@
-/* Checar sessão com páginas de tempdb reservadas */
+/* Check the number of reserved pages on tempdb for the current session */
 
 SELECT database_transaction_log_bytes_reserved,session_id 
 FROM sys.dm_tran_database_transactions AS tdt 
@@ -6,7 +6,7 @@ INNER JOIN sys.dm_tran_session_transactions AS tst
 ON tdt.transaction_id = tst.transaction_id 
 WHERE database_id = 2;
 
-/* Checar sessão com páginas reservadas, o que foi executado e o que está sendo executado */
+/* Check the current reserved pages, what was and what is being executed */
 
 SELECT tdt.database_transaction_log_bytes_reserved,tst.session_id,
        t.[text], [statement] = COALESCE(NULLIF(

@@ -3,14 +3,17 @@
 * All @name are variables, replace them by the correct object.                                  *
 ************************************************************************************************/
 
-
-/* Shows info about usage, such as table scans, index seeks and table updates. */
+--=================================================================================
+-- Shows info about usage, such as table scans, index seeks and table updates.
+--=================================================================================
 SELECT OBJECT_NAME(object_id) AS Table_Name, *
 FROM sys.dm_db_index_usage_stats
 WHERE DB_NAME(database_id) LIKE '%@Database_Name%';
 
 
-/* Shows info about index fragmentation */
+--=================================================================================
+-- Shows info about index fragmentation
+--=================================================================================
 /* Optional */ SELECT * FROM sys.objects WHERE name = '@table_name'										/* Get ObjectID */
 /* Optional */ SELECT name, database_id FROM sys.databases												/* Get DatabaseID */
 /* Optional */ SELECT name FROM sys.indexes WHERE object_id = @object_id and index_id = @index_id		/* Get IndexName */
@@ -20,22 +23,29 @@ FROM sys.dm_db_index_physical_stats(NULL,NULL,NULL,NULL,NULL)	 /* DatabaseID, Ob
 ORDER BY avg_fragmentation_in_percent DESC	
 
 
-/* Fixing index fragmentation */
+--=================================================================================
+-- Fixing index fragmentation
+--=================================================================================
 /* REBUILD -  locks tables and takes longer, however it does the best possible job 
    REORG - locks pages and it's faster, however it just reorganizes the pages */
 ALTER INDEX (all/@idx_name) ON (@nm_db/@table_name)
 REBUILD				
 WITH(online = on)	--Needs Enterprise Edition
 
-/* Last statistics update date */
+--=================================================================================
+-- Get last statistics update date
+--=================================================================================
 SELECT name AS index_name,
 STATS_DATE(OBJECT_ID, index_id) AS StatsUpdated
 FROM sys.indexes
 WHERE OBJECT_ID = OBJECT_ID('@table_name')
 
-/* Update statistics */
+--=================================================================================
+-- Update statistics
+--=================================================================================
 UPDATE STATISTICS @table_name
 WITH FULLSCAN
+
 
 /* Shows counters useful for statistics (such as Log Cache Hit Ratio, Transactions/s, etc) */
 SELECT * FROM sys.dm_os_performance_counters

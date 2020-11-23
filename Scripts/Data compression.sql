@@ -22,11 +22,11 @@ PRINT @cmdNoIndexOrPartition;
 --==========================================================================
 -- Savings IN %
 --
---size_with_current_compression_setting		= atual
---size_with_requested_compression_setting	= vaiSer
+--size_with_current_compression_setting		= current
+--size_with_requested_compression_setting	= future
 --==========================================================================
 
-SELECT 100 - ((vaiSer*100)/atual)
+SELECT 100 - ((future*100)/current)
 
 --==========================================================================
 -- Compress the data

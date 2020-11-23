@@ -47,8 +47,6 @@
 *
 * Exemplo de uso
 *
-* Nome e data do ultimo a modificar
-*
 **********************************/
 
 --Exemplo:
@@ -60,8 +58,6 @@
 * OUTPUT: Insercao dos registros de vendas de convenio não parcelados na tabela RC_VD_CONV, parcelados caso preciso.*
 *                                                                                                                   *
 * Ex.: EXEC P_ALGO_XYZ 545,'2012-05-01'                                                                             *
-*                                                                                                                   *
-* Ultimo a modificar: Victor Vaz (02/12/2016)                                                                       *
 *                                                                                                                   *
 ********************************************************************************************************************/
 
@@ -90,8 +86,6 @@ CREATE PROCEDURE P_ALGO_XYZ (@CD_FILIAL INT,@DT_PROC AS DATETIME) AS
 *
 * Observacoes importantes a considerar
 *
-* Nome e data do ultimo a modificar
-*
 *************************************/
 
 --Exemplo:
@@ -102,8 +96,6 @@ CREATE PROCEDURE P_ALGO_XYZ (@CD_FILIAL INT,@DT_PROC AS DATETIME) AS
 *
 * STS_CLI = 1 (Algo1), 2 (Algo2), 3 (Algo3).
 * FLAG_X = 1 (Não foi parcelado algo xyz).
-*
-* Ultimo a modificar: Victor Vaz (02/12/2016)
 *
 **************************************************************/
 
@@ -152,8 +144,6 @@ IF NOT EXISTS
 *
 * Observacoes importantes a considerar
 *
-* Nome e data do ultimo a modificar
-*
 *************************************/
 
 --Exemplo:
@@ -163,8 +153,6 @@ IF NOT EXISTS
 * Mostra os registros relacionados a XYZ que foram vendidos nos ultimos 10 dias.
 *
 * STS_CLI = 1 (Algo1), 2 (Algo2), 3 (Algo3).
-*
-* Ultimo a modificar: Victor Vaz (02/12/2016)
 *
 *******************************************************************************/
 
@@ -193,8 +181,6 @@ CREATE VIEW V_ALGO_XYZ AS 														/* Nome da VIEW */
 *
 * Observacoes importantes a considerar
 *
-* Nome e data do ultimo a modificar
-*
 *****************************************/
 
 --Exemplo:
@@ -204,8 +190,6 @@ CREATE VIEW V_ALGO_XYZ AS 														/* Nome da VIEW */
 * Coluna guarda possiveis estados de algo.
 *
 * STS_XYZ = 1 (Algo1), 2 (Algo2), 3 (Algo3).
-*
-* Ultimo a modificar: Victor Vaz (02/12/2016)
 *
 ********************************************/
 
@@ -235,8 +219,6 @@ IF NOT EXISTS
 *
 * Observacoes importantes a considerar
 *
-* Nome e data do ultimo a modificar
-*
 ****************************************/
 
 --Exemplo:
@@ -245,8 +227,6 @@ IF NOT EXISTS
 *
 * Coluna deveria guardar possiveis estados de algo, porem o tipo anterior (money) era desnecessario, 
 * tipo int economiza em espaco.
-*
-* Ultimo a modificar: Victor Vaz (02/12/2016)
 *
 ****************************************************************************************************/
 
@@ -275,8 +255,6 @@ IF EXISTS
 *
 * Observacoes importantes a considerar
 *
-* Nome e data do ultimo a modificar
-*
 **************************************/
 
 --Exemplo:
@@ -285,8 +263,6 @@ IF EXISTS
 * 
 * Devido a mudanças na regra de negócio, autorizadas pelo Ramam Freitas, e devido a nova coluna de código de xyz,
 * utilizadas pela aplicação App_xyz, ...
-*
-* Ultimo a modificar: Victor Vaz (02/12/2016)
 *
 ****************************************************************************************************************/
 

@@ -1,21 +1,16 @@
+--Atualização: Não suportado mais, talvez volte a traduzir e otimizar no futuro, porém não atualmente.
+
 /*
-Script criado por Victor Cotting Vaz
-Modificado por: ColoqueSeuNomeAquiEmCasoDeModificação
-Data: 02/03/2016
-Descrição: 	Deletar as tuplas (registros, linhas, rows, tuples) de tabelas e que possuam mais que '@qtd_dias' de de existencia.
-		O valor de @qtd_dias é definido na primeira linha executável de código, seguido por @qtd_meses.
-			O script obtém dinamicamente os nomes dos atributos chaves, seus tipos e tamanhos, além de criar uma tabela
-		temporária. Esta tabela é usada como um índice, contendo todas as chaves primárias que serão deletadas.
-			A deleção destas tabelas é feita em lotes. O tamanho do lote poderá ser modificado alterando o valor de uma 
-		unica variável.
+Descrição: 	Deletar as tuplas de tabelas e que possuam mais que '@qtd_dias' de de existencia.
 */
 
 /*Declaração de variáveis alteráveis*/
-DECLARE @qtd_dias INT = 90; 		--Quantidade de dias de vida máxima que os registros deverão ter. Deve ser equivalente a @qtd_meses (...3 = 90, 2 = 60, 1 = 30).
-DECLARE @qtd_meses INT = 3; 		--Quantidade de meses de vida máxima que os registros deveão ter. Deve ser equivalente a @qtd_dias (...90 = 3, 60 = 2, 30 = 1).
+DECLARE @qtd_meses INT = 3;
+DECLARE @qtd_dias INT = @qtd_dias*30;
 DECLARE @tamanhoLote INT = 100000   --Quantidade de registros que deverão ser deletados de cada vez.
 DECLARE @nomeTabela VARCHAR(100);	--Nome da tabela que será filtrada.
 DECLARE @atributoTempo VARCHAR(50);	--Nome do atributo que define o tempo de vida de cada registro.
+
 SET @nomeTabela = 'GLB_CHAVE_CPL';	--**********************************************MODIFICAR NOME DA TABELA!!*******************************************
 SET @atributoTempo = 'data'			--**********************************************MODIFICAR NOME DO ATRIBUTO*******************************************
 
